@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<ruleset name="Ibuildings QA Tools Standard Wrapper">
+<ruleset name="QA Tools Standard Wrapper">
     <description>
-        This is used by the Ibuildings QA tools to wrap the coding standard of your choice.
+        This is used by the QA tools to wrap the coding standard of your choice.
         By default it is less stringent about long lines than other coding standards
     </description>
 

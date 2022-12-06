@@ -1,0 +1,18 @@
+services:
+    tvdijen_cmdotcom_api_client.messaging:
+        class: tvdijen\CMDotCom\ApiClientBundle\Service\MessagingService
+        arguments:
+            - "@tvdijen_cmdotcom_client.library.messaging_service"
+            - "@logger"
+
+    tvdijen_cmdotcom_api_client.library.messaging_service:
+        public: false
+        class: tvdijen\CMDotCom\ApiClient\Messaging\MessagingService
+        arguments:
+            - "@tvdijen_cmdotcom_api_client.library.guzzle"
+
+    tvdijen_cmdotcom_api_client.library.guzzle:
+        public: false
+        class: GuzzleHttp\Client
+        arguments:
+            - { base_uri: "%tvdijen_cmdotcom_api_client.base_url%", headers: { Authorization: "%tvdijen_cmdotcom_api_client.authorization%" } }
