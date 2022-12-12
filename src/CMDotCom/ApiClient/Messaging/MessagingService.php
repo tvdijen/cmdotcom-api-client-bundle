@@ -51,7 +51,7 @@ class MessagingService
         try {
             $document = JsonHelper::decode(strval($response->getBody()));
         } catch (RuntimeException $e) {
-            throw new ApiRuntimeException('The MessageBird server did not return valid JSON.', [], $e);
+            throw new ApiRuntimeException('The CM.com server did not return valid JSON.', [], $e);
         }
 
         if (isset($document['errors'])) {
@@ -63,7 +63,7 @@ class MessagingService
         $statusCode = intval($response->getStatusCode());
 
         if (!in_array($statusCode, [200, 201, 204, 401, 404, 405, 422]) && !($statusCode >= 500 && $statusCode < 600)) {
-            throw new ApiRuntimeException(sprintf('Unexpected MessageBird server behaviour (HTTP %d)', $statusCode), $errors);
+            throw new ApiRuntimeException(sprintf('Unexpected CM.com server behaviour (HTTP %d)', $statusCode), $errors);
         }
 
         if (!isset($document['recipients']['items'][0]['status'])) {
