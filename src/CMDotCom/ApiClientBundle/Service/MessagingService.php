@@ -44,7 +44,7 @@ class MessagingService
             $result = $this->messagingService->send($message);
         } catch (ApiRuntimeException $e) {
             $this->logger->error(
-                sprintf('Unexpected communication failure with MessageBird; %s', $e->getMessage()),
+                sprintf('Unexpected communication failure with CM.com; %s', $e->getMessage()),
                 $this->createMessageLogContext($message)
             );
 
@@ -53,14 +53,14 @@ class MessagingService
 
         if ($result->isMessageInvalid()) {
             $this->logger->notice(
-                sprintf('Invalid message sent to MessageBird (%s)', $result->getErrorsAsString()),
+                sprintf('Invalid message sent to CM.com (%s)', $result->getErrorsAsString()),
                 $this->createMessageLogContext($message)
             );
         }
 
         if ($result->isAccessKeyInvalid()) {
             $this->logger->critical(
-                sprintf('Invalid access key used for MessageBird (%s)', $result->getErrorsAsString()),
+                sprintf('Invalid access key used for CM.com (%s)', $result->getErrorsAsString()),
                 $this->createMessageLogContext($message)
             );
         }
