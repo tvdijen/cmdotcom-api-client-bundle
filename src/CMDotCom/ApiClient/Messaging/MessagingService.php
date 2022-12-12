@@ -16,7 +16,7 @@ use function strval;
 class MessagingService
 {
     /**
-     * A Guzzle client, configured with MessageBird's API base url and a valid Authorization header.
+     * A Guzzle client, configured with CM.com's API base url and a valid Authorization header.
      *
      * @var \GuzzleHttp\Client
      */
